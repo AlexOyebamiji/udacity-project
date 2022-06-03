@@ -303,9 +303,10 @@ def edit_artist_submission(artist_id):
   artist.image_link = image_link
   artist.facebook_link = facebook_link
   artist.website_link = website_link
+  print(website_link)
   artist.seeking_description = seeking_description
   try:
-    # db.session.add(venue)
+    db.session.add(artist)
     db.session.commit()
   except:
      db.session.rollback()
@@ -362,7 +363,7 @@ def edit_venue_submission(venue_id):
   venue.website_link = website_link
   venue.seeking_description = seeking_description
   try:
-    # db.session.add(venue)
+    db.session.add(venue)
     db.session.commit()
   except:
      db.session.rollback()
@@ -395,8 +396,9 @@ def create_artist_submission():
   new_artist.phone = request.form['phone']
   new_artist.facebook_link = request.form['facebook_link']
   new_artist.genres = request.form['genres']
-  new_artist.website = request.form['website_link']
+  new_artist.website_link = request.form['website_link']
   new_artist.image_link = request.form['image_link']
+  new_artist.seeking_description = request.form['seeking_description']
   try:
     db.session.add(new_artist)
     db.session.commit()
